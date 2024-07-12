@@ -16,35 +16,21 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val museumRepository: MuseumRepository):ViewModel() {
     val cities=MutableLiveData<List<com.example.practice.model.Data>>()
-    val error=MutableLiveData<Boolean>(false)
-    val loading=MutableLiveData<Boolean>(false)
+//    val error=MutableLiveData<Boolean>(false)
+//    val loading=MutableLiveData<Boolean>(false)
     init {
         getcities()
     }
     fun getcities(){
-//        viewModelScope.launch (Dispatchers.IO){
-//            try {
-//                val response=museumRepository.get_cities()
-//                if(response.isSuccessful) {
-//                    response.body()?.data?.let{
-//                        withContext(Dispatchers.Main) {
-//                            cities.value=it
-//                        }
-//                    }
-//                }
-//            }catch(e:Exception){
-//
-//            }
-//        }
         viewModelScope.launch(Dispatchers.IO) {
             when(val response=museumRepository.get_cities()){
                 is NetworkResponse.Success->{
-                    response.data?.city?.let {
+                    response.data?.data?.let {
                         cities.value=it
                     }
                 }
                 is NetworkResponse.Error->{
-                    error.value=true
+//                    error.value=true
                 }
             }
         }

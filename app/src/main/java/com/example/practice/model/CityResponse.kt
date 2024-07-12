@@ -7,7 +7,7 @@ data class CityResponse(
     @SerializedName("creditUsed")
     val creditUsed: Int?,
     @SerializedName("data")
-    val city: List<Data>?,
+    val `data`: List<Data>?,
     @SerializedName("endpoint")
     val endpoint: String?,
     @SerializedName("message")
