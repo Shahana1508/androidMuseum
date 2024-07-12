@@ -10,7 +10,8 @@ import retrofit2.http.Query
 
 interface CityService {
     @GET("museum/cities")
-    suspend fun getCities(@Query("apiKey") apiKey: String = api_Key): Response<CityResponse>
+    suspend fun getCities(@Query("apiKey") apiKey: String = api_Key):
+            Response<CityResponse>
 
     @GET("museum/cities")
     suspend fun getDistricts(
