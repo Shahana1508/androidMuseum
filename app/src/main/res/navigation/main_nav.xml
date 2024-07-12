@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.practice.ui.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_regionFragment"
+            app:destination="@id/regionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/regionFragment"
+        android:name="com.example.practice.ui.RegionFragment"
+        android:label="fragment_region"
+        tools:layout="@layout/fragment_region" >
+        <argument
+            android:name="city"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_regionFragment_to_museumFragment"
+            app:destination="@id/museumFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/museumFragment"
+        android:name="com.example.practice.ui.MuseumFragment"
+        android:label="fragment_museum"
+        tools:layout="@layout/fragment_museum" >
+        <argument
+            android:name="district"
+            app:argType="string" />
+        <argument
+            android:name="city"
+            app:argType="string" />
+    </fragment>
+</navigation>
